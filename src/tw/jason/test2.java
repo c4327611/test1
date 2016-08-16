@@ -1,0 +1,23 @@
+package tw.jason;
+
+import java.util.Scanner;
+
+public class test2 {
+public static void main(String[] args) {
+	System.out.println("請輸入西元年份");
+	Scanner scanner = new Scanner(System.in);
+	int year = scanner.nextInt();
+	
+	if (year % 400 ==0) {
+		 System.out.println("西元" + year + "年為閏年");
+	 } else if (year % 100 == 0) {
+		 System.out.println("西元" + year + "年為平年");
+	 } else if (year % 4 == 0) {
+		 System.out.println("西元" + year + "年為閏年");
+	 } else {
+		 System.out.println("西元" + year + "年為平年");
+	
+	
+	}
+
+}
