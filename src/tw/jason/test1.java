@@ -20,5 +20,4 @@ public class test1 {
 			 System.out.println("西元" + year + "年為平年");
 		 }		
 	}
-
 }
