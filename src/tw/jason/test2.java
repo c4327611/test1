@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class test2 {
 public static void main(String[] args) {
-	System.out.println("請輸入西元年份");
+	System.out.print("請輸入西元年份:");
+	@SuppressWarnings("resource")
 	Scanner scanner = new Scanner(System.in);
 	int year = scanner.nextInt();
 	
@@ -20,4 +21,5 @@ public static void main(String[] args) {
 	
 	}
 
+}
 }
