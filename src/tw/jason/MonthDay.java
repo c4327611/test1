@@ -6,46 +6,95 @@ public class MonthDay {
 
 	public static void main(String[] args) {
 		// 輸入日期
-//		String strYear = 
-//				JOptionPane.showInputDialog("year");
-//		String strMonth = 
-//				JOptionPane.showInputDialog("month");
-//		int intYear = Integer.parseInt(strYear);
-//		int intMonth = Integer.parseInt(strMonth);
-//		System.out.println(intYear + "年/" + intMonth + "月");
-//		if (intYear>=4000||intMonth>=13){ //判斷使否輸入錯誤時間
-//			System.out.println("輸入錯誤");
+		String strYear = 
+				JOptionPane.showInputDialog("year");
+		String strMonth = 
+				JOptionPane.showInputDialog("month");
+		int intYear = Integer.parseInt(strYear);
+		int intMonth = Integer.parseInt(strMonth);
+		System.out.println(intYear + "年/" + intMonth + "月");
+		if (intYear>=4000||intMonth>=13){ //判斷是否輸入錯誤
+			System.out.println("輸入錯誤");
+			
 		
-//		}
-		System.out.println("Su Mo Tu We Th Fr Sa");
+		}
+		System.out.println("---------------萬年曆------------------");
+		System.out.println("日　一　二　三　四　五　六　");
+		int chose=0,year=0,month=0,first_day=0,end_day=0;
+		//輸出
 		
-			//西元1/1/1~1752/9/2
-	int[] Month = {1,2,3,4,5,6,7,8,9,10,11,12}; //fix
-	Month[0] = Month[2] = Month[4] = Month[6] = Month[7] = Month[9] = Month[11] = 31;
-	Month[3] = Month[5] = Month[8] = Month[10] = 30;
-	//System.out.println(Month[0]);
+	}
+		
+			//先判斷閏年及各月天數
 	
-	int intYear = 2016;
-	int intMonth = 8;
-	
-	if (intYear % 400 == 0) {  
-			Month[1] = 29;
-		 } else if (intYear % 100 == 0) {
-			 Month[1] = 28;
-		 } else if (intYear % 4 == 0) {
-			 Month[1] = 29;
-		 } else {
-			 Month[1] = 28;
-		 }
-		System.out.println();
-		
-		
-		//西元1752/9/14~1911/12/18
-		
-		
-		//1912/1/1~3999/12/31
-		
+	static int count_days(int year,int month){
+		   int days;
+		   if(year<=1752 && year%4==0 && month==2)
+		        days=29;
+		   else if(year>1752 && ((year%4==0 && year%100!=0)||year%400==0) && month==2)
+		        days=29;
+		   else if(month==1||month==3||month==5||month==7||month==8||month==10||month==12)
+		         days = 31;
+		   else if(month==4||month==6||month==9||month==11)
+		         days = 30;
+		   else
+		         days = 28;
+		   return(days);}
+		   
+		//1752年8月以前
+		   static int count_first_day(int year,int month){
+			   int i,j,f_day=0;
+			   if(year<1752 || (year==1752 && month<=8))
+			        {       f_day=6;
+			                for(i=1;i<year;++i)
+			                {       if(i%4==0)
+			                        f_day=(f_day+366%7)%7;
+			                        else
+			                        f_day=(f_day+365%7)%7;
+			                }
+			                for(j=1;j<month;++j)
+			                {       f_day=(f_day+count_days(year,j))%7;
+			                }
+			        }
+			 //1753年後
+			   else if(year>1752) 
+			        {       f_day=1;
+			                for(i=1753;i<year;++i)
+			                {    if((i%4==0&&i%100!=0)||i%400==0)
+			                     f_day=(f_day+366%7)%7;
+			                     else
+			                     f_day=(f_day+365%7)%7;
+			                }
+			                for(j=1;j<month;++j)
+			                f_day=(f_day+count_days(year,j))%7;
+			        }
+			   //1752年10月～12月
+			        else if(year==1752 && month>=10) 
+			        {       f_day=0;
+			                for(j=10;j<month;++j)
+			                f_day=(f_day+count_days(year,j))%7;
+			        }
+			        return(f_day);
+			    }
+		   
+		//1752年9月
+		   void special_program()
+		   {
+		           int counter,days,first_day,end_day;
+		           first_day=2;
+		           end_day=30;
+		           String s="日　一　二　三　四　五　六　\n";
+		           for(counter=0;counter<first_day;++counter)
+		           s+="\t";
+		           for(days=1;days<=end_day;++days){
+		             s+=Integer.toString(days)+"\t";
+		             if((first_day+days)%7==4&&days!=2)
+		                s+="\n";
+		             if(days==2)
+		                days=13;
+		           }
+		           
+		   }
 		
 	}
 
-}
