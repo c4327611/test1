@@ -12,15 +12,15 @@ public class MonthDay {
 				JOptionPane.showInputDialog("month");
 		int intYear = Integer.parseInt(strYear);
 		int intMonth = Integer.parseInt(strMonth);
-		System.out.println(intYear + "年/" + intMonth + "月");
+		System.out.println("\t 西元" + intYear + "年     " + intMonth + "月");
 		if (intYear>=4000||intMonth>=13){ //判斷是否輸入錯誤
-			System.out.println("輸入錯誤");
+			System.out.println("年份或月份輸入錯誤");
 			
 		
 		}
 		System.out.println("---------------萬年曆------------------");
 		System.out.println("日　一　二　三　四　五　六　");
-		int chose=0,year=0,month=0,first_day=0,end_day=0;
+		
 		//輸出
 		
 	}
@@ -45,7 +45,7 @@ public class MonthDay {
 		   static int count_first_day(int year,int month){
 			   int i,j,f_day=0;
 			   if(year<1752 || (year==1752 && month<=8))
-			        {       f_day=6;
+			        {       f_day=6; //西元1/01/01 星期六
 			                for(i=1;i<year;++i)
 			                {       if(i%4==0)
 			                        f_day=(f_day+366%7)%7;
@@ -58,7 +58,7 @@ public class MonthDay {
 			        }
 			 //1753年後
 			   else if(year>1752) 
-			        {       f_day=1;
+			        {       f_day=1; //1753/01/01 星期一
 			                for(i=1753;i<year;++i)
 			                {    if((i%4==0&&i%100!=0)||i%400==0)
 			                     f_day=(f_day+366%7)%7;
@@ -70,11 +70,11 @@ public class MonthDay {
 			        }
 			   //1752年10月～12月
 			        else if(year==1752 && month>=10) 
-			        {       f_day=0;
+			        {       f_day=0; //1752/10/01 星期天
 			                for(j=10;j<month;++j)
 			                f_day=(f_day+count_days(year,j))%7;
 			        }
-			        return(f_day);
+			   return (f_day);
 			    }
 		   
 		//1752年9月
@@ -92,8 +92,12 @@ public class MonthDay {
 		                s+="\n";
 		             if(days==2)
 		                days=13;
+		           } {
+		       
+		        	   
 		           }
 		           
+		           System.out.println();
 		   }
 		
 	}
