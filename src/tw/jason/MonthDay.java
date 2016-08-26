@@ -19,13 +19,10 @@ public class MonthDay {
 		
 		}
 		System.out.println("---------------萬年曆------------------");
-		System.out.println("日　一　二　三　四　五　六　");
+		System.out.println("日\t一\t二\t三\t四\t五\t六\t");
 		int year,month,fday,aday,days,firstday,endday;
 		int ayear = 0;
 		
-		//輸出
-		
-	
 		
 			//先判斷閏年及各月天數
 		
