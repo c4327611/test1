@@ -43,7 +43,7 @@ public class MonthDay {
 		   
 		//1752年8月以前
 			   if(intYear<1752 || (intYear==1752 && intMonth<=8)){
-				   fday=6;
+				   fday=6; //00010101 星期六
 				   for(int i=1;i<intYear;++i)
 					   if(i%4==0)
 						   aday=366;
@@ -68,7 +68,7 @@ public class MonthDay {
 			
 			 //1753年後
 			   else if(intYear>1752){
-				   fday=1;
+				   fday=1; //17530101 星期一
 				   for(int i=1753;i<intYear;++i){
 					   if((i%4==0&&i%100!=0)||i%400==0)
 						   aday=366;
@@ -92,7 +92,7 @@ public class MonthDay {
 			   
 			   //1752年10月～12月
 			   else if(intYear==1752 && intMonth>=10){
-				   fday=0;
+				   fday=0; //17521001 星期日
 				   //aday=354;
 				   if(intMonth==10||intMonth==12)
 					   days = 31;
@@ -106,10 +106,10 @@ public class MonthDay {
 		//1752年9月
 	            else if(intYear==1752 && intMonth==9){
 	            	days = 30;
-	            	firstday=2;
-	            	endday=30;
+	            	firstday=2;//17520901 星期二
+	            	endday=30; //星期六
 	            	
-	            	//%7 
+	            	//1.2.14.15...30 
 					   //輸出
 	            	
 	            	
