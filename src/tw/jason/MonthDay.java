@@ -20,78 +20,99 @@ public class MonthDay {
 		}
 		System.out.println("---------------萬年曆------------------");
 		System.out.println("日　一　二　三　四　五　六　");
-		int chose=0,year=0,month=0,first_day=0,end_day=0;
+		int year,month,fday,aday,days,firstday,endday;
+		int ayear = 0;
+		
 		//輸出
 		
-	}
+	
 		
 			//先判斷閏年及各月天數
-	
-	static int count_days(int year,int month){
-		   int days;
-		   if(year<=1752 && year%4==0 && month==2)
-		        days=29;
-		   else if(year>1752 && ((year%4==0 && year%100!=0)||year%400==0) && month==2)
-		        days=29;
-		   else if(month==1||month==3||month==5||month==7||month==8||month==10||month==12)
-		         days = 31;
-		   else if(month==4||month==6||month==9||month==11)
-		         days = 30;
-		   else
-		         days = 28;
-		   return(days);}
+		
+//		   if(year<=1752 && year%4==0 && month==2)
+//		        days=29;
+//		   else if(year>1752 && ((year%4==0 && year%100!=0)||year%400==0) && month==2)
+//		        days=29;
+//		   else if(month==1||month==3||month==5||month==7||month==8||month==10||month==12)
+//		         days = 31;
+//		   else if(month==4||month==6||month==9||month==11)
+//		         days = 30;
+//		   else
+//		         days = 28;
+//		   return(days);}
 		   
 		//1752年8月以前
-		   static int count_first_day(int year,int month){
-			   int i,j,f_day=0;
-			   if(year<1752 || (year==1752 && month<=8))
-			        {       f_day=6;
-			                for(i=1;i<year;++i)
-			                {       if(i%4==0)
-			                        f_day=(f_day+366%7)%7;
-			                        else
-			                        f_day=(f_day+365%7)%7;
-			                }
-			                for(j=1;j<month;++j)
-			                {       f_day=(f_day+count_days(year,j))%7;
-			                }
-			        }
+			   if(intYear<1752 || (intYear==1752 && intMonth<=8)){
+				   fday=6;
+				   for(int i=1;i<intYear;++i)
+					   if(i%4==0)
+						   aday=366;
+					   else aday=365;
+				   {
+					   if(intYear%4==0 && intMonth==2)
+					        days=29;
+					   else if(intMonth==1||intMonth==3||intMonth==5||intMonth==7||intMonth==8||intMonth==10||intMonth==12)
+					         days = 31;
+					   else if(intMonth==4||intMonth==6||intMonth==9||intMonth==11)
+					         days = 30;
+					   else
+					         days = 28;
+					   {
+						   //%7 
+						   //輸出
+							   
+					   }
+					   }
+				   
+				   }
+			
 			 //1753年後
-			   else if(year>1752) 
-			        {       f_day=1;
-			                for(i=1753;i<year;++i)
-			                {    if((i%4==0&&i%100!=0)||i%400==0)
-			                     f_day=(f_day+366%7)%7;
-			                     else
-			                     f_day=(f_day+365%7)%7;
-			                }
-			                for(j=1;j<month;++j)
-			                f_day=(f_day+count_days(year,j))%7;
+			   else if(intYear>1752){
+				   fday=1;
+				   for(int i=1753;i<intYear;++i){
+					   if((i%4==0&&i%100!=0)||i%400==0)
+						   aday=366;
+					   else
+						   aday=365;
+					   {
+				   if(intMonth==2)
+				        days=29;
+				   else if(intMonth==1||intMonth==3||intMonth==5||intMonth==7||intMonth==8||intMonth==10||intMonth==12)
+				         days = 31;
+				   else if(intMonth==4||intMonth==6||intMonth==9||intMonth==11)
+				         days = 30;
+				   else
+				         days = 28;
+				
 			        }
+					 //%7 
+					   //輸出
+				   }
+			   }
+			   
 			   //1752年10月～12月
-			        else if(year==1752 && month>=10) 
-			        {       f_day=0;
-			                for(j=10;j<month;++j)
-			                f_day=(f_day+count_days(year,j))%7;
-			        }
-			        return(f_day);
-			    }
-		   
+			   else if(intYear==1752 && intMonth>=10){
+				   fday=0;
+				   //aday=354;
+				   if(intMonth==10||intMonth==12)
+					   days = 31;
+				   else if(intMonth==11)
+				         days = 30;
+				 //%7 
+				   //輸出
+				   
+			   }
+			    
 		//1752年9月
-		   void special_program()
-		   {
-		           int counter,days,first_day,end_day;
-		           first_day=2;
-		           end_day=30;
-		           String s="日　一　二　三　四　五　六　\n";
-		           for(counter=0;counter<first_day;++counter)
-		           s+="\t";
-		           for(days=1;days<=end_day;++days){
-		             s+=Integer.toString(days)+"\t";
-		             if((first_day+days)%7==4&&days!=2)
-		                s+="\n";
-		             if(days==2)
-		                days=13;
+	            else if(intYear==1752 && intMonth==9){
+	            	days = 30;
+	            	firstday=2;
+	            	endday=30;
+	            	
+	            	//%7 
+					   //輸出
+	            	
+	            	
 		           }
 		           
 		   }
