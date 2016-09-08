@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.im.InputContext;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,16 +13,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import sun.awt.im.InputMethodContext;
+
 public class talkTo extends JFrame{
-	private JTextArea output = new JTextArea();
-	//private JTextField txtArea = new JTextField();
-	private JTextField input = new JTextField();
-	private JButton enter = new JButton("送出訊息");
+	 JTextArea output = new JTextArea();
+	 JTextField input = new JTextField();
+	 JButton enter = new JButton("送出訊息");
 
 		public talkTo(){
 			super("通訊程式");
-			
-			input.setColumns(20);
+			input.setColumns(25);
 			
 			JPanel down = new JPanel(new FlowLayout(FlowLayout.CENTER));
 			JPanel output = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -40,7 +41,7 @@ public class talkTo extends JFrame{
 			enter.addActionListener(new ActionListener() {
 				
 				@Override
-				public void actionPerformed(ActionEvent arg0) {
+				public void actionPerformed(ActionEvent e) {
 					doEnter();
 					
 				}
@@ -49,10 +50,7 @@ public class talkTo extends JFrame{
 		}
 		protected void doEnter() {
 			// 送出訊息
-			String message = paramString();
-			
-			
-			
+		
 			
 		}
 		public static void main(String[] args) {
