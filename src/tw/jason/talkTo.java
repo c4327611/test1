@@ -4,7 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.im.InputContext;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,8 +16,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import sun.awt.im.InputMethodContext;
-
 public class talkTo extends JFrame{
 	 JTextArea output = new JTextArea();
 	 JTextField input = new JTextField();
@@ -22,7 +23,7 @@ public class talkTo extends JFrame{
 
 		public talkTo(){
 			super("通訊程式");
-			input.setColumns(25);
+			input.setColumns(22);
 			
 			JPanel down = new JPanel(new FlowLayout(FlowLayout.CENTER));
 			JPanel output = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -34,7 +35,7 @@ public class talkTo extends JFrame{
 			add(jsp,BorderLayout.CENTER);
 			add(down,BorderLayout.SOUTH);
 			
-			setSize(500, 640); 
+			setSize(380, 650); 
 			setVisible(true); 
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			
@@ -50,6 +51,26 @@ public class talkTo extends JFrame{
 		}
 		protected void doEnter() {
 			// 送出訊息
+			String message = input.getText();
+			byte[] sendmessage = message.getBytes();
+		
+			try{
+			DatagramSocket socket = new DatagramSocket();
+			DatagramPacket packet = new DatagramPacket(
+					sendmessage ,sendmessage.length, 
+					InetAddress.getByName("127.0.0.1"),8888);
+			
+			socket.send(packet);
+			
+			socket.close();
+			
+			}catch (IOException e){
+				System.out.println(e.toString());
+			}
+			
+			
+		
+		
 		
 			
 		}
