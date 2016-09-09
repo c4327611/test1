@@ -57,13 +57,10 @@ public class Lotto extends JFrame implements ActionListener {
 				
 			}while (!isOK);
 			
-			 num[i] = rand;
-//		    System.out.println(num[i]);
-			for (int k=0;k<Output.length;k++){
-		  Output[k].add(num[i]);
+
 			}
         }
-		}
+		
 	
 		public static void main(String[] args) {
 			new Lotto();

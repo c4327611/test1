@@ -1,7 +1,7 @@
 package tw.jason;
 
 import  java.io.*;
-public class test1 {
+public class year1 {
 	public static void main(String[] args) throws IOException {
 		System.out.print("請輸入西元年份:");
 		

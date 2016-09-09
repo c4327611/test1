@@ -2,7 +2,7 @@ package tw.jason;
 
 import java.util.Scanner;
 
-public class test2 {
+public class year2 {
 public static void main(String[] args) {
 	System.out.print("請輸入西元年份:");
 	@SuppressWarnings("resource")
